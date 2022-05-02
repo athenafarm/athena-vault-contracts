@@ -10,7 +10,7 @@ pub struct InstantiateMsg {
     pub stable_denom: String,
     /// Invest percentage
     pub invest_percentage: Decimal,
-    /// minimum lock period
+    /// lock period
     pub lock_period: u64,
 
 }

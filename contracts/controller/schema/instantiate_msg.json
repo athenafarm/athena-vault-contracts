@@ -12,7 +12,7 @@
       "type": "string"
     },
     "treasury": {
-      "description": "Imhotepdao treasury address",
+      "description": "Athena treasury address",
       "type": "string"
     }
   }

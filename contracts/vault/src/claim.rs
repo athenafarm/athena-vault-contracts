@@ -17,9 +17,7 @@ pub fn claim_yield(
     info: MessageInfo,
 ) -> StdResult<Response> {
     let config = read_config(deps.storage)?;
-    println!("info: {:?}", info);
     let mut deposit_info = read_deposit_info(deps.storage, &info.sender)?;
-    println!("deposit_info: {:?}", deposit_info);
 
     if deposit_info.maturity > env.block.time.seconds() {
         return Err(StdError::generic_err("Still locked"));

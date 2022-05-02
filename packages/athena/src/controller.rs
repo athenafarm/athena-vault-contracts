@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 pub struct InstantiateMsg {
     /// Governance address
     pub governance: String,
-    /// Imhotepdao treasury address
+    /// Athena treasury address
     pub treasury: String,
 }
 

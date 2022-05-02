@@ -1,6 +1,6 @@
 use cosmwasm_std::{to_binary, Decimal, Deps, QueryRequest, StdResult, Uint128, WasmQuery};
 
-use crate::state::{read_config, read_deposit_info, read_state, Config};
+use crate::state::{read_config, read_deposit_info, read_state, Config, DepositInfo};
 use athena::vault_strategy::QueryMsg as StrategyQueryMsg;
 use athena::vault::{ConfigResponse, DepositInfoResponse, State};
 use athena::asset::AssetInfo;
@@ -114,7 +114,18 @@ pub fn get_balance_by_share(
 }
 
 pub fn query_deposit_info(deps: Deps, addr: String) -> StdResult<DepositInfoResponse> {
-    let deposit_info = read_deposit_info(deps.storage, &deps.api.addr_validate(&addr)?)?;
+    let deposit_info = match read_deposit_info(deps.storage, &deps.api.addr_validate(&addr)?) {
+        Ok(info) => info,
+        Err(_) => DepositInfo{
+            principal: Uint128::zero(),
+            current_amount: Uint128::zero(),
+            share: Uint128::zero(),
+            maturity: u64::MIN,
+            yield_amount: Uint128::zero(),
+            yield_claimed: Uint128::zero(),
+            principal_claimed: Uint128::zero(),
+        }
+    };
     Ok(DepositInfoResponse {
         principal: deposit_info.principal,
         current_amount: deposit_info.current_amount,

@@ -22,7 +22,7 @@
       ]
     },
     "lock_period": {
-      "description": "minimum lock period",
+      "description": "lock period",
       "type": "integer",
       "format": "uint64",
       "minimum": 0.0
