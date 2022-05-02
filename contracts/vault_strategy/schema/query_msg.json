@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "QueryMsg",
+  "oneOf": [
+    {
+      "description": "Query current configuration",
+      "type": "object",
+      "required": [
+        "config"
+      ],
+      "properties": {
+        "config": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "description": "Query current strategy state",
+      "type": "object",
+      "required": [
+        "state"
+      ],
+      "properties": {
+        "state": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "description": "Query total underlying balance in strategy",
+      "type": "object",
+      "required": [
+        "total_balance"
+      ],
+      "properties": {
+        "total_balance": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

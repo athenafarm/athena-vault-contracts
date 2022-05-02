@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ConfigResponse",
+  "type": "object",
+  "required": [
+    "anchor_market",
+    "aterra_contract",
+    "contract_addr",
+    "controller",
+    "mirror_mint",
+    "mirror_oracle",
+    "mirror_staking",
+    "mirror_token",
+    "performance_fee",
+    "stable_denom",
+    "terraswap_factory",
+    "vault"
+  ],
+  "properties": {
+    "anchor_market": {
+      "type": "string"
+    },
+    "aterra_contract": {
+      "type": "string"
+    },
+    "contract_addr": {
+      "type": "string"
+    },
+    "controller": {
+      "type": "string"
+    },
+    "mirror_mint": {
+      "type": "string"
+    },
+    "mirror_oracle": {
+      "type": "string"
+    },
+    "mirror_staking": {
+      "type": "string"
+    },
+    "mirror_token": {
+      "type": "string"
+    },
+    "performance_fee": {
+      "$ref": "#/definitions/Decimal"
+    },
+    "stable_denom": {
+      "type": "string"
+    },
+    "terraswap_factory": {
+      "type": "string"
+    },
+    "vault": {
+      "type": "string"
+    }
+  },
+  "definitions": {
+    "Decimal": {
+      "description": "A fixed-point decimal value with 18 fractional digits, i.e. Decimal(1_000_000_000_000_000_000) == 1.0\n\nThe greatest possible value that can be represented is 340282366920938463463.374607431768211455 (which is (2^128 - 1) / 10^18)",
+      "type": "string"
+    }
+  }
+}
