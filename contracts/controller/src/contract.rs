@@ -30,7 +30,6 @@ pub fn instantiate(
         &deps.api.addr_canonicalize(&msg.governance)?,
         &UserRole {
             is_worker: true,
-            is_claimer: true,
         },
     )?;
 
@@ -55,8 +54,7 @@ pub fn execute(
                 ExecuteMsg::UpdateRole {
                     user,
                     is_worker,
-                    is_claimer,
-                } => update_user_role(deps, user, is_worker, is_claimer),
+                } => update_user_role(deps, user, is_worker),
             }
         }
     }
@@ -102,21 +100,18 @@ pub fn update_user_role(
     deps: DepsMut,
     user: String,
     is_worker: bool,
-    is_claimer: bool,
 ) -> StdResult<Response> {
     store_user_role(
         deps.storage,
         &deps.api.addr_canonicalize(&user)?,
         &UserRole {
             is_worker,
-            is_claimer,
         },
     )?;
     Ok(Response::new().add_attributes(vec![
         attr("action", "update_user_role"),
         attr("user", user),
         attr("is_worker", is_worker.to_string()),
-        attr("is_claimer", is_claimer.to_string()),
     ]))
 }
 

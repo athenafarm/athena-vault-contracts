@@ -55,8 +55,6 @@ pub fn withdraw_to_vault(
             &deps.querier,
             deps.api.addr_humanize(&config.controller)?,
             info.sender,
-            true,
-            false,
         )?;
     }
 

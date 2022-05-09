@@ -3,13 +3,9 @@
   "title": "UserRole",
   "type": "object",
   "required": [
-    "is_claimer",
     "is_worker"
   ],
   "properties": {
-    "is_claimer": {
-      "type": "boolean"
-    },
     "is_worker": {
       "type": "boolean"
     }

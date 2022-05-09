@@ -6,19 +6,14 @@ pub fn assert_access_privilege(
     querier: &QuerierWrapper,
     controller: Addr,
     user: Addr,
-    is_worker: bool,
-    is_claimer: bool,
 ) -> StdResult<()> {
-    if !is_worker && !is_claimer {
-        Ok(())
-    } else {
-        let user_role = query_user_role(querier, controller, user)?;
-        if (is_worker && !user_role.is_worker) || (is_claimer && !user_role.is_claimer) {
-            return Err(StdError::generic_err("unauthorized"));
-        }
+    let user_role = query_user_role(querier, controller, user)?;
 
-        Ok(())
+    if !user_role.is_worker {
+        return Err(StdError::generic_err("unauthorized"));
     }
+
+    Ok(())
 }
 
 pub fn assert_sender_privilege(sender: String, required_sender: String) -> StdResult<()> {

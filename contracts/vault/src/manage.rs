@@ -62,8 +62,6 @@ pub fn invest(deps: Deps, info: MessageInfo) -> StdResult<Response> {
         &deps.querier,
         deps.api.addr_humanize(&config.controller)?,
         info.sender,
-        true,
-        false,
     )?;
 
     if config.strategy.is_none() {

@@ -45,7 +45,6 @@ mod tests {
       user_role,
       UserRole {
         is_worker: true,
-        is_claimer: true,
       }
     );
   }
@@ -157,7 +156,6 @@ mod tests {
     let msg = ExecuteMsg::UpdateRole {
       user: String::from("user"),
       is_worker: true,
-      is_claimer: false,
     };
 
     // failed with unauthorized error
@@ -179,7 +177,6 @@ mod tests {
         attr("action", "update_user_role"),
         attr("user", String::from("user")),
         attr("is_worker", "true"),
-        attr("is_claimer", "false"),
       ]
     );
 
@@ -196,14 +193,12 @@ mod tests {
       user_role,
       UserRole {
         is_worker: true,
-        is_claimer: false,
       }
     );
 
     let msg = ExecuteMsg::UpdateRole {
       user: String::from("user1"),
       is_worker: true,
-      is_claimer: true,
     };
 
     let info = mock_info("governance", &[]);
@@ -216,7 +211,6 @@ mod tests {
         attr("action", "update_user_role"),
         attr("user", "user1"),
         attr("is_worker", "true"),
-        attr("is_claimer", "true"),
       ]
     );
 
@@ -233,7 +227,6 @@ mod tests {
       user_role,
       UserRole {
         is_worker: true,
-        is_claimer: true,
       }
     );
   }

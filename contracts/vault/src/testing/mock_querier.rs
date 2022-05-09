@@ -87,22 +87,14 @@ impl WasmMockQuerier {
                     if user == String::from("worker") {
                         SystemResult::Ok(ContractResult::from(to_binary(&UserRole {
                             is_worker: true,
-                            is_claimer: false,
-                        })))
-                    } else if user == String::from("claimer") {
-                        SystemResult::Ok(ContractResult::from(to_binary(&UserRole {
-                            is_worker: false,
-                            is_claimer: true,
                         })))
                     } else if user == String::from("governance") {
                         SystemResult::Ok(ContractResult::from(to_binary(&UserRole {
                             is_worker: true,
-                            is_claimer: true,
                         })))
                     } else {
                         SystemResult::Ok(ContractResult::from(to_binary(&UserRole {
                             is_worker: false,
-                            is_claimer: false,
                         })))
                     }
                 }

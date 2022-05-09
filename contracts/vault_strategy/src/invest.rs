@@ -28,8 +28,6 @@ pub fn deposit_anchor(deps: DepsMut, info: MessageInfo, amount: Uint128) -> StdR
         &deps.querier,
         deps.api.addr_humanize(&config.controller)?,
         info.sender,
-        true,
-        false,
     )?;
 
     if amount.is_zero() {
@@ -63,8 +61,6 @@ pub fn withdraw_anchor(
             &deps.querier,
             deps.api.addr_humanize(&config.controller)?,
             info.sender,
-            true,
-            false,
         )?;
     }
 
@@ -86,8 +82,6 @@ pub fn deposit_mirror(
         &deps.querier,
         deps.api.addr_humanize(&config.controller)?,
         info.sender,
-        true,
-        false,
     )?;
 
     if amount.is_zero() {
@@ -248,8 +242,6 @@ pub fn withdraw_mirror(
             &deps.querier,
             deps.api.addr_humanize(&config.controller)?,
             info.sender,
-            true,
-            false,
         )?;
     }
 
@@ -312,8 +304,6 @@ pub fn open_short_position(
         &deps.querier,
         deps.api.addr_humanize(&config.controller)?,
         info.sender,
-        true,
-        false,
     )?;
 
     let aterra_asset_info = AssetInfo::Token {
@@ -364,8 +354,6 @@ pub fn close_short_position(
         &deps.querier,
         deps.api.addr_humanize(&config.controller)?,
         info.sender,
-        true,
-        false,
     )?;
 
     let position = query_mirror_position(deps.as_ref(), config.clone(), position_idx)?;
@@ -499,8 +487,6 @@ pub fn withdraw_all(deps: DepsMut, env: Env, info: MessageInfo) -> StdResult<Res
             &deps.querier,
             deps.api.addr_humanize(&config.controller)?,
             info.sender,
-            true,
-            false,
         )?;
     }
 
@@ -549,8 +535,6 @@ pub fn compound_mirror(deps: DepsMut, env: Env, info: MessageInfo) -> StdResult<
             &deps.querier,
             deps.api.addr_humanize(&config.controller)?,
             info.sender,
-            true,
-            false,
         )?;
     }
 

@@ -21,7 +21,6 @@ pub enum ExecuteMsg {
     UpdateRole {
         user: String,
         is_worker: bool,
-        is_claimer: bool,
     },
 }
 
@@ -48,5 +47,4 @@ pub struct ConfigResponse {
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub struct UserRole {
     pub is_worker: bool,
-    pub is_claimer: bool,
 }
